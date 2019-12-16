@@ -7,11 +7,8 @@ app.set("view engine", "pug");
 app.set("views", "views")
 app.use(express.urlencoded({extended: true}));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/mongo-1",
-{ useNewUrlParser: true,
-useUnifiedTopology: true,
-useFindAndModify: false });
-
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1', { useNewUrlParser: true });
+mongoose.connection.on("error",function(e){console.error(e);});
 
 app.get('/', async (req, res) => {
   const name = (req.query.name == undefined || req.query.name == '') ? 'Anónimo' : req.query.name
