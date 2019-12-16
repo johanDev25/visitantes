@@ -7,7 +7,7 @@ app.set("view engine", "pug");
 app.set("views", "views")
 app.use(express.urlencoded({extended: true}));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/Visitor",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/mongo-1",
 { useNewUrlParser: true,
 useUnifiedTopology: true,
 useFindAndModify: false });
